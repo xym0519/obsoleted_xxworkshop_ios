@@ -1,12 +1,6 @@
-#
-# Be sure to run `pod spec lint NAME.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# To learn more about the attributes see http://docs.cocoapods.org/specification.html
-#
 Pod::Spec.new do |s|
   s.name         = "xxworkshop_ios"
-  s.version      = "0.1.0"
+  s.version      = "0.0.1"
   s.summary      = "A short description of xxworkshop_ios."
   s.description  = <<-DESC
                     An optional longer description of xxworkshop_ios
@@ -18,7 +12,7 @@ Pod::Spec.new do |s|
   s.screenshots  = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license      = 'MIT'
   s.author       = { "Broche Xu" => "xym0519@gmail.com" }
-  s.source       = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/xym0519/xxworkshop_ios.git", :tag => "0.0.1" }
 
   # s.platform     = :ios, '5.0'
   # s.ios.deployment_target = '5.0'
@@ -32,5 +26,6 @@ Pod::Spec.new do |s|
   s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
-  # s.dependency 'JSONKit', '~> 1.4'
+  s.dependency 'FMDB', '~> 2.2'
+  s.dependency 'SBJson', '~> 3.2'
 end
