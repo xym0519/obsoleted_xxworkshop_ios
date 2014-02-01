@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.author       = { "Broche Xu" => "xym0519@gmail.com" }
   s.source       = { :git => "https://github.com/xym0519/xxworkshop_ios.git", :tag => "0.0.1" }
-
   # s.platform     = :ios, '5.0'
   # s.ios.deployment_target = '5.0'
   # s.osx.deployment_target = '10.7'
@@ -21,6 +20,26 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Classes'
   #s.resources = 'Assets'
+
+  s.subspec 'XXLog' do |xxlog|
+    xxlog.source_files = 'Classes/XXLog'
+  end
+
+  s.subspec 'XXDao' do |xxdao|
+    xxdao.source_files = 'Classes/XXDao'
+  end
+
+  s.subspec 'XXSystem' do |xxsystem|
+    xxsystem.source_files = 'Classes/XXSystem'
+  end
+
+  s.subspec 'XXFormatter' do |xxformatter|
+    xxformatter.source_files = 'Classes/XXFormatter'
+  end
+
+  s.subspec 'XXNetwork' do |xxnetwork|
+    xxnetwork.source_files = 'Classes/XXNetwork'
+  end
 
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'
