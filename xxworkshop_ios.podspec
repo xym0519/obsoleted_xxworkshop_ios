@@ -18,33 +18,34 @@ Pod::Spec.new do |s|
   # s.osx.deployment_target = '10.7'
   s.requires_arc = true
 
-  s.source_files = 'Classes'
+  #s.source_files = 'Classes'
   #s.resources = 'Assets'
 
   s.subspec 'XXLog' do |xxlog|
     xxlog.source_files = 'Classes/XXLog'
   end
 
-  s.subspec 'XXDao' do |xxdao|
-    xxdao.source_files = 'Classes/XXDao'
-  end
-
   s.subspec 'XXSystem' do |xxsystem|
     xxsystem.source_files = 'Classes/XXSystem'
   end
 
-  s.subspec 'XXFormatter' do |xxformatter|
-    xxformatter.source_files = 'Classes/XXFormatter'
+  s.subspec 'XXDao' do |xxdao|
+    xxdao.source_files = 'Classes/XXDao'
+    xxdao.dependency 'FMDB', '~> 2.2'
+    xxdao.dependency 'xxworkshop_ios/XXSystem'
   end
 
-  s.subspec 'XXNetwork' do |xxnetwork|
-    xxnetwork.source_files = 'Classes/XXNetwork'
+  s.subspec 'XXFormatter' do |xxformatter|
+    xxformatter.source_files = 'Classes/XXFormatter'
+    xxformatter.dependency 'SBJson', '~> 3.2'
   end
+
+ # s.subspec 'XXNetwork' do |xxnetwork|
+ #   xxnetwork.source_files = 'Classes/XXNetwork'
+ # end
 
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'
   # s.public_header_files = 'Classes/**/*.h'
   # s.frameworks = 'SomeFramework', 'AnotherFramework'
-  s.dependency 'FMDB', '~> 2.2'
-  s.dependency 'SBJson', '~> 3.2'
 end
