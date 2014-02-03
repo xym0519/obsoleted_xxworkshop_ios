@@ -1,20 +1,15 @@
 # xxworkshop_ios
 
-[![Version](http://cocoapod-badges.herokuapp.com/v/xxworkshop_ios/badge.png)](http://cocoadocs.org/docsets/xxworkshop_ios)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/xxworkshop_ios/badge.png)](http://cocoadocs.org/docsets/xxworkshop_ios)
-
 ## Usage
 
-To run the example project; clone the repo, and run `pod install` from the Project directory first.
-
-## Requirements
+To run the example project; clone the repo, and run `pod install` from the Project/develop directory first.
 
 ## Installation
 
-xxworkshop_ios is available through [CocoaPods](http://cocoapods.org), to install
+xxworkshop_ios is available through [GitHub](https://github.com/xym0519/xxworkshop_ios), to install
 it simply add the following line to your Podfile:
 
-    pod "xxworkshop_ios"
+    pod "xxworkshop_ios", :git => "https://github.com/xym0519/xxworkshop_ios.git"
 
 ## Author
 
