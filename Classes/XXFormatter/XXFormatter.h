@@ -1,9 +1,9 @@
 //
 //  XXFormatter.h
-//  IOSTester
+//  xxworkshop_ios
 //
-//  Created by Broche Xu on 6/26/13.
-//  Copyright (c) 2013 xxworkshop. All rights reserved.
+//  Created by Broche Xu on 2/4/14.
+//  Copyright (c) 2014 xxworkshop. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
