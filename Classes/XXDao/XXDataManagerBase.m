@@ -12,11 +12,12 @@
 #import "XXSystem.h"
 
 #ifndef XXSqlitePath
-#warning must define a sqlite path
+#error must define a sqlite path
 #else
 
 #ifndef XXDaoDebug
-#warning should define debug flag
+#define XXDaoDebug YES
+#warning should define dao debug flag
 #endif
 
 @implementation XXDataManagerBase {
@@ -41,7 +42,7 @@
 }
 
 - (NSMutableArray *)query:(NSString *)sql {
-#ifdef XXDaoDebug
+#if XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     NSMutableArray *result = [[NSMutableArray alloc] init];
@@ -54,7 +55,7 @@
 }
 
 - (NSDictionary *)fetch:(NSString *)sql {
-#ifdef XXDaoDebug
+#if XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     FMResultSet *rs = [db executeQuery:sql];
@@ -67,7 +68,7 @@
 }
 
 - (id)scalar:(NSString *)sql {
-#ifdef XXDaoDebug
+#if XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     FMResultSet *rs = [db executeQuery:sql];
@@ -82,14 +83,14 @@
 }
 
 - (BOOL)execute:(NSString *)sql {
-#ifdef XXDaoDebug
+#if XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     return [db executeUpdate:sql];
 }
 
 - (long long int)insert:(NSString *)sql {
-#ifdef XXDaoDebug
+#if XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     [db executeUpdate:sql];
