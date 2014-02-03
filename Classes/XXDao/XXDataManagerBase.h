@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @interface XXDataManagerBase : NSObject
+- (id)init:(NSString *)fileName;
 - (void)initTable:(NSString *)tableName withData:(NSMutableArray *)data;
 
 - (NSMutableArray *)query:(NSString *)sql;

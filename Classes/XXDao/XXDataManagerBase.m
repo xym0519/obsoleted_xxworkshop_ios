@@ -11,10 +11,6 @@
 #import "XXLog.h"
 #import "XXSystem.h"
 
-#ifndef XXSqlitePath
-#error must define a sqlite path
-#else
-
 #ifndef XXDaoDebug
 #define XXDaoDebug YES
 #warning should define dao debug flag
@@ -24,12 +20,16 @@
     FMDatabase *db;
 }
 
-- (id)init {
+- (id)init:(NSString *)fileName {
     self = [super init];
     if (self) {
-        NSArray *arr = [XXSqlitePath componentsSeparatedByString:@"."];
-        NSString *dbPath = [XXSystem ResourcePath:[arr objectAtIndex:0] withExtension:[arr objectAtIndex:1]];
-        db = [FMDatabase databaseWithPath:dbPath];
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *srcPath = [[XXSystem ResourcePath] stringByAppendingPathComponent:fileName];
+        NSString *dstPath = [[XXSystem DocumentsPath] stringByAppendingPathComponent:fileName];
+        if (![fm fileExistsAtPath:dstPath]) {
+            [fm copyItemAtPath:srcPath toPath:dstPath error:nil];
+        }
+        db = [FMDatabase databaseWithPath:dstPath];
         if (![db open]) {
             exit(0);
         }
@@ -123,5 +123,3 @@
     [self commit];
 }
 @end
-
-#endif
