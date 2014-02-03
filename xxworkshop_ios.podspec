@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.license      = 'MIT'
   s.author       = { "Broche Xu" => "xym0519@gmail.com" }
   s.source       = { :git => "https://github.com/xym0519/xxworkshop_ios.git", :tag => "0.0.1" }
-  # s.platform     = :ios, '5.0'
+  s.platform     = :ios
   # s.ios.deployment_target = '5.0'
   # s.osx.deployment_target = '10.7'
   s.requires_arc = true
@@ -33,7 +33,8 @@ Pod::Spec.new do |s|
     xxsystem.source_files = 'Classes/XXSystem'
     xxsystem.dependency 'xxworkshop_ios/XXGenerator'
     xxsystem.dependency 'SSKeychain', '~> 1.2.1'
-    xxsystem.dependency 'UIKit.framework'
+    xxsystem.framework = 'UIKit'
+    #xxsystem.compiler_flags = '-fmodules'
   end
 
   s.subspec 'XXFormatter' do |xxformatter|
