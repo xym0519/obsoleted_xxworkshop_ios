@@ -7,11 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#ifndef XXSqlitePath
-need to define a sqlite path
-#endif
-
 @interface XXDataManagerBase : NSObject
 - (void)initTable:(NSString *)tableName withData:(NSMutableArray *)data;
 

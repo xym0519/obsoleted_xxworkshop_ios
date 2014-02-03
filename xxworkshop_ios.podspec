@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
     xxsystem.source_files = 'Classes/XXSystem'
     xxsystem.dependency 'xxworkshop_ios/XXGenerator'
     xxsystem.dependency 'SSKeychain', '~> 1.2.1'
+    xxsystem.dependency 'UIKit.framework'
   end
 
   s.subspec 'XXFormatter' do |xxformatter|

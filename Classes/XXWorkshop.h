@@ -7,11 +7,8 @@
 //
 
 #ifndef XXCONFIG
-you must define a new config file and define a macro named XXCONFIG
-//#define XXLogDebug
-//#define XXDaoDebug
-//#define XXSqlitePath @"data.cache"
-#endif
+#warning you should define a new config file and define a macro named XXCONFIG containing: #define XXLogDebug, #define XXDaoDebug, #define XXSqlitePath @"data.cache"
+#else
 
 #import "XXLog.h"
 #import "XXSystem.h"
@@ -19,3 +16,4 @@ you must define a new config file and define a macro named XXCONFIG
 #import "XXFormatter.h"
 #import "XXGenerator.h"
 
+#endif

@@ -11,6 +11,14 @@
 #import "XXLog.h"
 #import "XXSystem.h"
 
+#ifndef XXSqlitePath
+#warning must define a sqlite path
+#else
+
+#ifndef XXDaoDebug
+#warning should define debug flag
+#endif
+
 @implementation XXDataManagerBase {
     FMDatabase *db;
 }
@@ -114,3 +122,5 @@
     [self commit];
 }
 @end
+
+#endif
