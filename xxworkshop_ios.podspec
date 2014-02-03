@@ -18,31 +18,36 @@ Pod::Spec.new do |s|
   # s.osx.deployment_target = '10.7'
   s.requires_arc = true
 
-  #s.source_files = 'Classes'
+  s.source_files = 'Classes'
   #s.resources = 'Assets'
 
   s.subspec 'XXLog' do |xxlog|
     xxlog.source_files = 'Classes/XXLog'
   end
+  
+  s.subspec 'XXGenerator' do |xxgenerator|
+    xxgenerator.source_files = 'Classes/XXGenerator'
+  end
 
   s.subspec 'XXSystem' do |xxsystem|
     xxsystem.source_files = 'Classes/XXSystem'
-  end
-
-  s.subspec 'XXDao' do |xxdao|
-    xxdao.source_files = 'Classes/XXDao'
-    xxdao.dependency 'FMDB', '~> 2.2'
-    xxdao.dependency 'xxworkshop_ios/XXSystem'
+    xxsystem.dependency 'xxworkshop_ios/XXGenerator'
+    xxsystem.dependency 'SSKeychain', '~> 1.2.1'
   end
 
   s.subspec 'XXFormatter' do |xxformatter|
     xxformatter.source_files = 'Classes/XXFormatter'
     xxformatter.dependency 'SBJson', '~> 3.2'
+    xxformatter.dependency 'Base64', '~> 1.0.1'
+    xxformatter.dependency 'GZIP', '~> 1.0.2'
   end
 
- # s.subspec 'XXNetwork' do |xxnetwork|
- #   xxnetwork.source_files = 'Classes/XXNetwork'
- # end
+  s.subspec 'XXDao' do |xxdao|
+    xxdao.source_files = 'Classes/XXDao'
+    xxdao.dependency 'FMDB', '~> 2.2'
+    xxdao.dependency 'xxworkshop_ios/XXLog'
+    xxdao.dependency 'xxworkshop_ios/XXSystem'
+  end
 
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'

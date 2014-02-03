@@ -1,0 +1,7 @@
+platform :ios,'6.0'
+
+pod 'SBJson', '~> 3.2'
+pod 'FMDB', '~>2.2'
+pod 'SSKeychain', '~> 1.2.1'
+pod 'Base64', '~> 1.0.1'
+pod 'GZIP', '~> 1.0.2'

@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, XXAnchor) {
+    XXAnchorLeftTop,
+    XXAnchorLeftCenter,
+    XXAnchorLeftBottom,
+    XXAnchorCenterTop,
+    XXAnchorCenter,
+    XXAnchorCenterBottom,
+    XXAnchorRightTop,
+    XXAnchorRightCenter,
+    XXAnchorRightBottom
+};
+
 @interface XXFormatter : NSObject
 #pragma mark -
 #pragma mark Json
@@ -25,4 +37,19 @@
 + (NSString *)Dictionary2String:(NSDictionary *)dic withItemSplitter:(NSString *)itemSplitter withSectionSplitter:(NSString *)sectionSplitter;
 + (NSArray *)String2Array:(NSString *)str withSplitter:(NSString *)splitter;
 + (NSDictionary *)String2Dictionary:(NSString *)str withItemSplitter:(NSString *)itemSplitter withSectionSplitter:(NSString *)sectionSplitter;
+
+#pragma mark -
+#pragma mark CGRect/CGSize/CGPoint
++ (CGRect)CGRectFromX:(CGFloat)x Y:(CGFloat)y Width:(CGFloat)width Height:(CGFloat)height Anchor:(XXAnchor)anchor;
+
+#pragma mark -
+#pragma mark Zip
++ (NSData *)Zip:(NSData *)data;
++ (NSData *)UnZip:(NSData *)data;
+
+#pragma mark -
+#pragma mark Base64
++ (NSString *)Base64Encode:(NSString *)src;
++ (NSString *)Base64Decode:(NSString *)src;
++ (NSString *)ZipAndBase64Encode2:(NSString *)src;
 @end

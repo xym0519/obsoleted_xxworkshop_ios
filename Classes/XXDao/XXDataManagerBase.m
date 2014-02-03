@@ -8,6 +8,7 @@
 
 #import "XXDataManagerBase.h"
 #import "FMDatabase.h"
+#import "XXLog.h"
 #import "XXSystem.h"
 
 @implementation XXDataManagerBase {
@@ -17,7 +18,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        NSArray *arr = [XXDatabasePath componentsSeparatedByString:@"."];
+        NSArray *arr = [XXSqlitePath componentsSeparatedByString:@"."];
         NSString *dbPath = [XXSystem ResourcePath:[arr objectAtIndex:0] withExtension:[arr objectAtIndex:1]];
         db = [FMDatabase databaseWithPath:dbPath];
         if (![db open]) {
@@ -32,7 +33,7 @@
 }
 
 - (NSMutableArray *)query:(NSString *)sql {
-#ifdef XXDEBUG_DATAMANAGER
+#ifdef XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     NSMutableArray *result = [[NSMutableArray alloc] init];
@@ -45,7 +46,7 @@
 }
 
 - (NSDictionary *)fetch:(NSString *)sql {
-#ifdef XXDEBUG_DATAMANAGER
+#ifdef XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     FMResultSet *rs = [db executeQuery:sql];
@@ -58,7 +59,7 @@
 }
 
 - (id)scalar:(NSString *)sql {
-#ifdef XXDEBUG_DATAMANAGER
+#ifdef XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     FMResultSet *rs = [db executeQuery:sql];
@@ -73,10 +74,18 @@
 }
 
 - (BOOL)execute:(NSString *)sql {
-#ifdef XXDEBUG_DATAMANAGER
+#ifdef XXDaoDebug
     XXLog(@"\nsql: %@\n\n", sql);
 #endif
     return [db executeUpdate:sql];
+}
+
+- (long long int)insert:(NSString *)sql {
+#ifdef XXDaoDebug
+    XXLog(@"\nsql: %@\n\n", sql);
+#endif
+    [db executeUpdate:sql];
+    return db.lastInsertRowId;
 }
 
 - (void)beginTransaction {

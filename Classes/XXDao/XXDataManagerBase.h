@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#ifdef XXDatabasePath
-#else
-#define XXDatabasePath @"data.sqlite"
+#ifndef XXSqlitePath
+need to define a sqlite path
 #endif
 
 @interface XXDataManagerBase : NSObject
@@ -20,6 +19,7 @@
 - (NSDictionary *)fetch:(NSString *)sql;
 - (id)scalar:(NSString *)sql;
 - (BOOL)execute:(NSString *)sql;
+- (long long int)insert:(NSString *)sql;
 - (void)beginTransaction;
 - (void)commit;
 @end
