@@ -36,6 +36,12 @@
 + (id)getUserDefaults:(NSString *)key;
 
 #pragma mark -
+#pragma mark Graphics
++ (UIImage *)getImageFromView:(UIView *)view;
++ (UIImage *)modifyImage:(UIImage *)originImg addImage:(UIImage *)newImg atPosition:(CGPoint)position;
++ (UIImage *)cutImage:(UIImage *)image in:(CGRect)rect;
+
+#pragma mark -
 #pragma mark Other
 + (NSTimeInterval)TimeStamp;
 + (NSString *)DeviceId;

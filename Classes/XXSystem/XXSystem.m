@@ -79,6 +79,33 @@
 }
 
 #pragma mark -
+#pragma mark Graphics
++ (UIImage *)getImageFromView:(UIView *)view {
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
++ (UIImage *)modifyImage:(UIImage *)originImg addImage:(UIImage *)newImg atPosition:(CGPoint)position {
+    UIGraphicsBeginImageContextWithOptions(originImg.size, NO, [UIScreen mainScreen].scale);
+    [originImg drawAtPoint:CGPointMake(0, 0)];
+    [newImg drawAtPoint:position];
+    UIImage *res = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return res;
+}
+
++ (UIImage *)cutImage:(UIImage *)image in:(CGRect)rect {
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
+    [image drawAtPoint:CGPointMake(-rect.origin.x, -rect.origin.y)];
+    UIImage *res = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return res;
+}
+
+#pragma mark -
 #pragma mark Other
 + (NSTimeInterval)TimeStamp {
     return [[[NSDate alloc] init] timeIntervalSince1970];
