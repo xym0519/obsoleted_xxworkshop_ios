@@ -18,4 +18,5 @@
 - (long long int)insert:(NSString *)sql;
 - (void)beginTransaction;
 - (void)commit;
+- (void)batchImportable:(NSString *) tableName WithData:(NSMutableArray *) data;
 @end

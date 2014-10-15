@@ -122,4 +122,13 @@
     }
     [self commit];
 }
+
+-(void) batchImportable:(NSString *) tableName WithData:(NSMutableArray *) data {
+    [self beginTransaction];
+    [self execute:[NSString stringWithFormat:@"delete from %@",tableName]];
+    for (int i=0; i<data.count; i++) {
+        [self execute:[data objectAtIndex:i]];
+    }
+    [self commit];
+}
 @end
